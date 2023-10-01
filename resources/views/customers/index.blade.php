@@ -1,13 +1,13 @@
-@extends('customers.layout')
+@extends('layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Daftar Produk</h2>
+                <h2>Daftar Customer</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-info" href="{{ route('products.create') }}"> Tambah Produk</a>
+                <a class="btn btn-info" href="{{ route('customers.create') }}"> Create New Customer</a>
             </div>
         </div>
     </div>
@@ -22,22 +22,24 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Details</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Phone</th>
             <th width="280px">Action</th>
         </tr>
 
-        @foreach ($products as $product)
+        @foreach ($customers as $customer)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $product->name }}</td>
-            <td>{{ $product->gender }}</td>
-            <td>{{ $product->email }}</td>
-            <td>{{ $product->phone }}</td>
+            <td>{{ $customer->name }}</td>
+            <td>{{ $customer->gender }}</td>
+            <td>{{ $customer->email }}</td>
+            <td>{{ $customer->phone }}</td>
             <td>
 
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                <form action="{{ route('customers.destroy',$customer->id) }}" method="POST">
+                    <a class="btn btn-info" href="{{ route('customers.show',$customer->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('customers.edit',$customer->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -47,5 +49,5 @@
         @endforeach
     </table>
 
-    {!! $products->links() !!}
+    {!! $customers->links() !!}
 @endsection

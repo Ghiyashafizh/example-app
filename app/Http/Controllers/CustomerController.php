@@ -33,8 +33,9 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone_number' => 'required',
             'gender' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
         ]);
         Customer::create($request->all());
         return redirect()->route('customers.index')
@@ -65,8 +66,9 @@ class CustomerController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone_number' => 'required',
             'gender' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
         ]);
         $customer->update($request->all());
         return redirect()->route('customers.index')
